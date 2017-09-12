@@ -1,7 +1,5 @@
 <?php
-/**
- * This file is used as a proxy to Nginx and PHP Built-in server.
- */
+
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
