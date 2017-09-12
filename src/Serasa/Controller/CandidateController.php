@@ -36,4 +36,31 @@ class CandidateController
             'candidates' => $candidates
         ], 200);
     }
+
+    /**
+     * Finds a given candidate by ID.
+     *
+     * @param $id
+     * @param Application $app
+     * @return JsonResponse
+     */
+    public function show($id, Application $app)
+    {
+        $message = 'Showing Candidate #' . $id;
+
+        $sql = "SELECT * FROM candidates WHERE id = :id";
+
+        $statement = $app['db']->prepare($sql);
+        $statement->bindValue('id', $id);
+        $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, Candidate::class);
+
+        $candidate = $statement->fetch();
+
+        return new JsonResponse([
+            'message' => $message,
+            'candidate' => $candidate
+        ], 200);
+    }
+
 }
