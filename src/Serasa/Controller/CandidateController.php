@@ -136,4 +136,37 @@ class CandidateController
         ], 200);
     }
 
+    /**
+     * Updates a given candidate by ID
+     *
+     * @param $id
+     * @param Application $app
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function update($id, Application $app, Request $request)
+    {
+        $message = 'Updating Candidate #' . $id;
+
+        $validatorErrors = CandidateValidator::factory(
+            $request->query->all(),
+            CandidateValidator::IS_UPDATE
+        )->getErrors();
+
+        if (!empty($validatorErrors)) {
+            return new JsonResponse(['errors' => $validatorErrors], 400);
+        }
+
+        $update = new \DateTime('now', new \DateTimeZone('America/Sao_Paulo'));
+
+        $data = CandidateSanitizer::factory($request->query->all())->getAll();
+        $data['updated_at'] = $update->format('Y-m-d H:i:s');
+
+        $candidate = $app['db']->update('candidates', $data, ['id' => $id]);
+
+        return new JsonResponse([
+            'message' => $message,
+            'candidate' => $candidate
+        ], 200);
+    }
 }
