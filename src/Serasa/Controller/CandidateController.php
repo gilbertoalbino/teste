@@ -53,7 +53,7 @@ class CandidateController
         $statement = $app['db']->prepare($sql);
         $statement->bindValue('id', $id);
         $statement->execute();
-        $statement->setFetchMode(\PDO::FETCH_CLASS, Candidate::class);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, CandidateHydrator::class);
 
         $candidate = $statement->fetch();
 
