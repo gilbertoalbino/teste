@@ -1,7 +1,22 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Zyne
- * Date: 12/09/2017
- * Time: 15:00
+ * Application's entry point for Development Environment.
  */
+if (isset($_SERVER['HTTP_CLIENT_IP'])
+    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+    || !in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1'))
+) {
+    header('HTTP/1.0 403 Forbidden');
+    exit('You are not allowed to access this file.');
+}
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$app = new Silex\Application();
+require __DIR__ . '/../app/config/config_dev.php';
+require __DIR__ . '/../app/config/parameters.php';
+require __DIR__ . '/../app/routes.php';
+require __DIR__ . '/../app/providers.php';
+require __DIR__ . '/../src/index.php';
+
+$app['http_cache']->run();
