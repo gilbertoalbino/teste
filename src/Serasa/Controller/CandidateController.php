@@ -169,4 +169,23 @@ class CandidateController
             'candidate' => $candidate
         ], 200);
     }
+    
+    /**
+     * Deletes a given candidate by ID
+     *
+     * @param $id
+     * @param Application $app
+     * @return JsonResponse
+     */
+    public function destroy($id, Application $app)
+    {
+        $message = 'Deleting Candidate #' . $id;
+
+        $candidate = $app['db']->delete('candidates', ['id' => $id]);
+
+        return new JsonResponse([
+            'message' => $message,
+            'candidate' => $candidate
+        ], 200);
+    }
 }
