@@ -3,6 +3,8 @@
 namespace Serasa\Controller;
 
 use Serasa\Hydrator\CandidateHydrator;
+use Serasa\Sanitizer\CandidateSanitizer;
+use Serasa\Validator\CandidateValidator;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -130,7 +132,7 @@ class CandidateController
 
         return new JsonResponse([
             'message' => $message,
-            'candidate' => $candidate
+            'candidate' => ($candidate == 1) ? $app['db']->lastInsertId() : 0
         ], 200);
     }
 
