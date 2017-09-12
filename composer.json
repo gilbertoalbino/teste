@@ -1,17 +1,22 @@
 {
-    "name": "gilbertoalbino/teste",
-    "description": "Serasa's Experian PHP Developer Test",
-    "type": "project",
-    "require": {
-        "silex/silex": "^2.2",
-        "firebase/php-jwt": "^5.0",
-        "doctrine/dbal": "^2.5",
-        "monolog/monolog": "^1.23"
-    },
-    "authors": [
-        {
-            "name": "gilbertoalbino",
-            "email": "contato@gilbertoalbino.com"
-        }
-    ]
+  "name": "gilbertoalbino/teste",
+  "description": "Serasa's Experian PHP Developer Test",
+  "type": "project",
+  "require": {
+    "silex/silex": "^2.2",
+    "firebase/php-jwt": "^5.0",
+    "doctrine/dbal": "^2.5",
+    "monolog/monolog": "^1.23"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "gilbertoalbino",
+      "email": "contato@gilbertoalbino.com"
+    }
+  ]
 }
