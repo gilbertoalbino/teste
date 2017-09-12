@@ -60,7 +60,7 @@ class CandidateSanitizer
 
     /**
      * Utility helper for usage on update action.
-     * 
+     *
      * @return mixed
      */
     public function getAll()
