@@ -14,3 +14,8 @@ $app->get('/', function () use ($app) {
  * The login is responsible for generating a JWT for use in the whole application auth system.
  */
 $app->match($app['api'] . '/auth/login', '\Serasa\Controller\AuthController::login');
+
+/**
+ * The API routes as provided by the Service.
+ */
+$app->mount($app['api'] . '/candidates', new \Serasa\Provider\CandidateProvider());
