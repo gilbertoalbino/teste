@@ -11,6 +11,7 @@ class CandidateHydrator
 {
     public $id;
     public $fullname;
+    public $birthdate;
     public $resume_score;
     public $interview_score;
     public $test_score;
