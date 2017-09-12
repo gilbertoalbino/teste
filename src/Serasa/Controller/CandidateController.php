@@ -2,6 +2,7 @@
 
 namespace Serasa\Controller;
 
+use Serasa\Hydrator\CandidateHydrator;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,5 +35,5 @@ class CandidateController
             'message' => $message,
             'candidates' => $candidates
         ], 200);
-    } 
+    }
 }
