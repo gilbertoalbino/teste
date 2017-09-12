@@ -169,7 +169,7 @@ class CandidateController
             'candidate' => $candidate
         ], 200);
     }
-    
+
     /**
      * Deletes a given candidate by ID
      *
